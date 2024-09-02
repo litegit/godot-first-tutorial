@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://gvrhtgj6a2gs"]
+
+[ext_resource type="Script" path="res://HUD.gd" id="1_8nwu1"]
+[ext_resource type="FontFile" uid="uid://ctlar1a00ayj4" path="res://fonts/Xolonium-Regular.ttf" id="2_7jbwu"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_irskq"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_fnr0f"]
+events = [SubResource("InputEventAction_irskq")]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_8nwu1")
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -22.5
+offset_top = 39.0
+offset_right = 22.5
+offset_bottom = 117.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_7jbwu")
+theme_override_font_sizes/font_size = 64
+text = "0"
+
+[node name="Message" type="Label" parent="."]
+offset_top = 167.0
+offset_right = 480.0
+offset_bottom = 387.0
+theme_override_fonts/font = ExtResource("2_7jbwu")
+theme_override_font_sizes/font_size = 64
+text = "Message of the day"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="."]
+custom_minimum_size = Vector2(300, 2.08165e-12)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -88.5
+offset_top = -198.0
+offset_right = 88.5
+offset_bottom = -112.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_7jbwu")
+theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_fnr0f")
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="."]
+custom_minimum_size = Vector2(300, 2.08165e-12)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -73.0
+offset_top = -104.0
+offset_right = 73.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_7jbwu")
+theme_override_font_sizes/font_size = 64
+text = "Quit"
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
