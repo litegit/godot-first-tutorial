@@ -56,7 +56,7 @@ script = ExtResource("1_whnev")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_xhsy4")
-animation = &"walk"
+animation = &"fly"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
